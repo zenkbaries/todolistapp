@@ -38,7 +38,6 @@ export default class TaskList extends Component {
     render() {
         return (
             <div>
-                {/* <h3>Task List</h3> */}
                 <table className="table table-striped" style={{ marginTop: 20 }} >
                     <thead>
                         <tr>

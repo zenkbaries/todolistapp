@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import axios from 'axios';
 
 export default class CreateList extends Component {
@@ -15,7 +16,7 @@ export default class CreateList extends Component {
             list_status: '',
             list_item: '',
             list_due: '',
-            created_on: ''
+            list_created: ''
         }
     }
 
@@ -39,6 +40,7 @@ export default class CreateList extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+        // this.props.history.push('/');
         
         console.log(`Form submitted:`);
         console.log(`Item Status: ${this.state.list_status}`);
@@ -54,6 +56,8 @@ export default class CreateList extends Component {
         axios.post('http://localhost:4000/lists/add', newItem)
             .then(res => console.log(res.data));
 
+        this.props.history.push('/');
+
         this.setState({
             list_status: '',
             list_item: '',
@@ -67,58 +71,31 @@ export default class CreateList extends Component {
                 <h3>Create New Item</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group"> 
-                        <label>Description: </label>
+                        <label>New Item: </label>
                         <input  type="text"
-                                className="form-control"
-                                value={this.state.list_status}
-                                onChange={this.onChangeListStatus}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <label>Responsible: </label>
-                        <input 
-                                type="text" 
                                 className="form-control"
                                 value={this.state.list_item}
                                 onChange={this.onChangeListItem}
                                 />
                     </div>
                     <div className="form-group">
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input" 
-                                    type="radio" 
-                                    name="priorityOptions" 
-                                    id="priorityLow" 
-                                    value="Low"
-                                    checked={this.state.list_due==='Low'} 
-                                    onChange={this.onChangeListDue}
-                                    />
-                            <label className="form-check-label">Low</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input" 
-                                    type="radio" 
-                                    name="priorityOptions" 
-                                    id="priorityMedium" 
-                                    value="Medium" 
-                                    checked={this.state.list_due==='Medium'} 
-                                    onChange={this.onChangeListDue}
-                                    />
-                            <label className="form-check-label">Medium</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input" 
-                                    type="radio" 
-                                    name="priorityOptions" 
-                                    id="priorityHigh" 
-                                    value="High" 
-                                    checked={this.state.list_due==='High'} 
-                                    onChange={this.onChangeListDue}
-                                    />
-                            <label className="form-check-label">High</label>
-                        </div>
+                        <label>Due Date: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.list_due}
+                                onChange={this.onChangeListDue}
+                                />
                     </div>
-
+                    <div className="form-group">
+                        <label>Status: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.list_status}
+                                onChange={this.onChangeListStatus}
+                                />
+                    </div>        
                     <div className="form-group">
                         <input type="submit" value="Create Item" className="btn btn-primary" />
                     </div>

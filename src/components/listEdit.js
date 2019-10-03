@@ -16,7 +16,7 @@ export default class EditTask extends Component {
             list_status: '',
             list_item: '',
             list_due: '',
-            created_on: ''
+            list_created: ''
         }
     }
 
@@ -27,7 +27,7 @@ export default class EditTask extends Component {
                     list_status: response.data.list_status,
                     list_item: response.data.list_item,
                     list_due: response.data.list_due,
-                    created_on: response.data.created_on
+                    list_created: response.data.list_created
                 })   
             })
             .catch(function (error) {
@@ -55,7 +55,7 @@ export default class EditTask extends Component {
 
     onChangeTaskCompleted(e) {
         this.setState({
-            created_on: !this.state.created_on
+            list_created: !this.state.list_created
         });
     }
 
@@ -65,7 +65,7 @@ export default class EditTask extends Component {
             list_status: this.state.list_status,
             list_item: this.state.list_item,
             list_due: this.state.list_due,
-            created_on: this.state.created_on
+            list_created: this.state.list_created
         };
         console.log(obj);
         axios.post('http://localhost:4000/lists/update/'+this.props.match.params.id, obj)
@@ -137,8 +137,8 @@ export default class EditTask extends Component {
                                 type="checkbox"
                                 name="completedCheckbox"
                                 onChange={this.onChangeTaskCompleted}
-                                checked={this.state.created_on}
-                                value={this.state.created_on}
+                                checked={this.state.list_created}
+                                value={this.state.list_created}
                                 />
                         <label className="form-check-label" htmlFor="completedCheckbox">
                             Completed

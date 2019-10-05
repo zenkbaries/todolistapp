@@ -7,7 +7,9 @@ export default class TaskList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {lists: []};
+        this.state = {  refreshlist: '',
+                        lists: []
+                    };
     }
 
     componentDidMount() {
@@ -19,7 +21,18 @@ export default class TaskList extends Component {
                 console.log(error);
             })
     }
-    
+
+    componentDidUpdate(prevProps){
+         if(prevProps.newItem !== this.props.newItem){
+            axios.get('http://localhost:4000/lists/')
+                .then(response => {
+                     this.setState({ lists: response.data });
+                })
+                .catch(function (error){
+                     console.log(error);
+                })
+         }
+    }
 
     listoftask() {
         return this.state.lists.map(function(currentItem, i){

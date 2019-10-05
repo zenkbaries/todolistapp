@@ -8,7 +8,6 @@ export default class ItemField extends Component {
                 <th>Item</th>
                 <th>Due</th>
                 <th>Created</th>
-                <th>misc2</th>
             </tr>
         );
     }

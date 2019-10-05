@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import TaskList from './tasklist';
 import axios from 'axios';
 
 export default class CreateList extends Component {
@@ -13,6 +13,7 @@ export default class CreateList extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
+            new_item: {},
             list_status: '',
             list_item: '',
             list_due: '',
@@ -40,13 +41,12 @@ export default class CreateList extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        // this.props.history.push('/');
-        
+
         console.log(`Form submitted:`);
         console.log(`Item Status: ${this.state.list_status}`);
         console.log(`Item: ${this.state.list_item}`);
         console.log(`Item Due: ${this.state.list_due}`);
-     
+
         const newItem = {
             list_status: this.state.list_status,
             list_item: this.state.list_item,
@@ -56,17 +56,17 @@ export default class CreateList extends Component {
         axios.post('http://localhost:4000/lists/add', newItem)
             .then(res => console.log(res.data));
 
-        this.props.history.push('/');
-
         this.setState({
             list_status: '',
             list_item: '',
             list_due: '',
+            new_item: newItem
         })
     }
 
     render() {
         return (
+            <div>
             <div style={{marginTop: 10}}>
                 <h3>Create New Item</h3>
                 <form onSubmit={this.onSubmit}>
@@ -100,6 +100,8 @@ export default class CreateList extends Component {
                         <input type="submit" value="Create Item" className="btn btn-primary" />
                     </div>
                 </form>
+            </div>
+            <TaskList newItem={this.state.new_item}/>
             </div>
         )
     }

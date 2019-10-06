@@ -54,14 +54,14 @@ export default class CreateList extends Component {
         };
 
         axios.post('http://localhost:4000/lists/add', newItem)
-            .then(res => console.log(res.data));
-
-        this.setState({
-            list_status: '',
-            list_item: '',
-            list_due: '',
-            new_item: newItem
-        })
+             .then(res => {
+                 this.setState({
+                     list_status: '',
+                     list_item: '',
+                     list_due: '',
+                     new_item: newItem
+                 })
+             });
     }
 
     render() {

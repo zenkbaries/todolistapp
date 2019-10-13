@@ -22,8 +22,9 @@ export default class TaskList extends Component {
             })
     }
 
-    componentDidUpdate(prevProps){
-         if(prevProps.newItem !== this.props.newItem){
+    componentDidUpdate(){
+        //  if(prevProps.newItem !== this.props.newItem){
+         if(true) {
             axios.get('http://localhost:4000/lists/')
                 .then(response => {
                      this.setState({ lists: response.data });

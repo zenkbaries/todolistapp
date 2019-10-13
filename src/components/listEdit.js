@@ -6,13 +6,13 @@ export default class EditTask extends Component {
     constructor(props) {
         super(props);
 
-        this.onChangeTaskDescription = this.onChangeTaskDescription.bind(this);
-        this.onChangeTaskResponsible = this.onChangeTaskResponsible.bind(this);
-        this.onChangeTaskPriority = this.onChangeTaskPriority.bind(this);
-        this.onChangeTaskCompleted = this.onChangeTaskCompleted.bind(this);
+        this.onChangeListStatus = this.onChangeListStatus.bind(this);
+        this.onChangeListItem = this.onChangeListItem.bind(this);
+        this.onChangeListDue = this.onChangeListDue.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
+            new_item: {},
             list_status: '',
             list_item: '',
             list_due: '',
@@ -35,19 +35,19 @@ export default class EditTask extends Component {
             })
     }
 
-    onChangeTaskDescription(e) {
+    onChangeListStatus(e) {
         this.setState({
             list_status: e.target.value
         });
     }
 
-    onChangeTaskResponsible(e) {
+    onChangeListItem(e) {
         this.setState({
             list_item: e.target.value
         });
     }
 
-    onChangeTaskPriority(e) {
+    onChangeListDue(e) {
         this.setState({
             list_due: e.target.value
         });
@@ -69,9 +69,10 @@ export default class EditTask extends Component {
         };
         console.log(obj);
         axios.post('http://localhost:4000/lists/update/'+this.props.match.params.id, obj)
-            .then(res => console.log(res.data));
-        
-        this.props.history.push('/');
+            .then(res => console.log(res.data))
+            .then(console.log("Now redirecting..."))
+            this.props.history.push("/");
+            // return (<Redirect to='/' />);
     }
 
     render() {
@@ -80,70 +81,32 @@ export default class EditTask extends Component {
                 <h3 align="center">Update Task</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group"> 
-                        <label>Description: </label>
+                        <label>Status: </label>
                         <input  type="text"
                                 className="form-control"
                                 value={this.state.list_status}
-                                onChange={this.onChangeTaskDescription}
+                                onChange={this.onChangeListStatus}
                                 />
                     </div>
                     <div className="form-group">
-                        <label>Responsible: </label>
+                        <label>Task: </label>
                         <input 
                                 type="text" 
                                 className="form-control"
                                 value={this.state.list_item}
-                                onChange={this.onChangeTaskResponsible}
+                                onChange={this.onChangeListItem}
                                 />
                     </div>
                     <div className="form-group">
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input" 
-                                    type="radio" 
-                                    name="priorityOptions" 
-                                    id="priorityLow" 
-                                    value="Low"
-                                    checked={this.state.list_due==='Low'} 
-                                    onChange={this.onChangeTaskPriority}
-                                    />
-                            <label className="form-check-label">Low</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input" 
-                                    type="radio" 
-                                    name="priorityOptions" 
-                                    id="priorityMedium" 
-                                    value="Medium" 
-                                    checked={this.state.list_due==='Medium'} 
-                                    onChange={this.onChangeTaskPriority}
-                                    />
-                            <label className="form-check-label">Medium</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input" 
-                                    type="radio" 
-                                    name="priorityOptions" 
-                                    id="priorityHigh" 
-                                    value="High" 
-                                    checked={this.state.list_due==='High'} 
-                                    onChange={this.onChangeTaskPriority}
-                                    />
-                            <label className="form-check-label">High</label>
-                        </div>
-                    </div>
-                    <div className="form-check">
-                        <input  className="form-check-input"
-                                id="completedCheckbox"
-                                type="checkbox"
-                                name="completedCheckbox"
-                                onChange={this.onChangeTaskCompleted}
-                                checked={this.state.list_created}
-                                value={this.state.list_created}
+                        <label>Due: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.list_due}
+                                onChange={this.onChangeListDue}
                                 />
-                        <label className="form-check-label" htmlFor="completedCheckbox">
-                            Completed
-                        </label>                        
                     </div>
+
 
                     <br />
 

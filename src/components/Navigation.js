@@ -17,12 +17,12 @@ class Navigation extends React.Component {
             <li className="nav-item">
               <a className="nav-link" href="/create">Create Item</a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link" href="/">Projects</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/">Tags</a>
-            </li>
+            </li> */}
           </ul>
           {/* <form className="form-inline my-2 my-lg-0">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />

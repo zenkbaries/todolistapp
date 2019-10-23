@@ -7,8 +7,23 @@ import TaskList from './components/tasklist';
 import EditTask from './components/listEdit';
 import CreateList from './components/listCreate';
 
+// Firebase Authenticaion 
+
+import withFirebaseAuth from 'react-with-firebase-auth'
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import firebaseConfig from './config/firebaseConfig';
+
+
 class App extends Component {
   render() { 
+
+    const {
+      user,
+      signOut,
+      signInWithGoogle,
+    } = this.props;
+
     return (
       <Router>
         <div>
@@ -24,4 +39,20 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+const firebaseAppAuth = firebaseApp.auth();
+
+const providers = {
+  googleProvider: new firebase.auth.GoogleAuthProvider(),
+};
+
+
+export default withFirebaseAuth({
+  providers,
+  firebaseAppAuth,
+})(App);
+
+

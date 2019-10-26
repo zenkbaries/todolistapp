@@ -7,8 +7,19 @@ import TaskList from './components/tasklist';
 import EditTask from './components/listEdit';
 import CreateList from './components/listCreate';
 
+import { useAuth0 } from "./react-auth0-spa";
+
 class App extends Component {
   render() { 
+
+    const { loading } = useAuth0();
+
+    if (loading) {
+      return (
+        <div>Loading...</div>
+      );
+    }
+
     return (
       <Router>
         <div>

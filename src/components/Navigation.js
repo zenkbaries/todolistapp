@@ -1,7 +1,13 @@
 import React from 'react';
+import { useAuth0 } from "../react-auth0-spa";
 
 class Navigation extends React.Component {
+
   render() {
+
+    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">The List</a>
@@ -16,6 +22,21 @@ class Navigation extends React.Component {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/create">Create Item</a>
+            </li>
+            <li>
+            {/* <div>
+              {!isAuthenticated && (
+                <button
+                  onClick={() =>
+                    loginWithRedirect({})
+                  }
+                >
+                  Log in
+                </button>
+              )}
+
+              {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+            </div> */}
             </li>
             {/* <li className="nav-item">
               <a className="nav-link" href="/">Projects</a>

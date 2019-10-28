@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class ItemField extends Component {
-    render() {
+const ItemField = () => {
+
         return (
             <tr>
                 <th>Status</th>
@@ -10,5 +10,7 @@ export default class ItemField extends Component {
                 <th>Created</th>
             </tr>
         );
-    }
-}
+};
+
+
+export default ItemField;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 export default class ItemRow extends Component {
 
 
@@ -7,7 +6,6 @@ export default class ItemRow extends Component {
 
         return (
             <tr>
-                <td>{this.props.list.list_status}</td>
                 <td>{this.props.list.list_item}</td>
                 <td>
                     {new Date(this.props.list.list_due).toDateString()}

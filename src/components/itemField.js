@@ -7,7 +7,7 @@ const ItemField = () => {
                 <th>Status</th>
                 <th>Item</th>
                 <th>Due</th>
-                <th>Created</th>
+                <th>Action</th>
             </tr>
         );
 };

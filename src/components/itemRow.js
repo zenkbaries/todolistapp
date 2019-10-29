@@ -12,9 +12,7 @@ export default class ItemRow extends Component {
                 <td>
                     {new Date(this.props.list.list_due).toDateString()}
                 </td>
-                <td>
-                    <Link to={"/edit/"+this.props.list._id}>Edit</Link>
-                </td>
+                <td><a href={"/edit/"+this.props.list._id} className="btn btn-info" role="button">Edit</a></td>
             </tr>
         );
     }

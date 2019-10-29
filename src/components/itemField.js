@@ -4,7 +4,6 @@ const ItemField = () => {
 
         return (
             <tr>
-                <th>Status</th>
                 <th>Item</th>
                 <th>Due</th>
                 <th>Action</th>

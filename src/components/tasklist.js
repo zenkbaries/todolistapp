@@ -23,7 +23,6 @@ export default class TaskList extends Component {
     }
 
     componentDidUpdate(){
-        //  if(prevProps.newItem !== this.props.newItem){
          if(true) {
             axios.get('http://localhost:4000/lists/')
                 .then(response => {
@@ -33,6 +32,12 @@ export default class TaskList extends Component {
                      console.log(error);
                 })
          }
+    }
+
+    handleToggleComplete() {
+        //
+        //  Send POST to api server (/complete/:id) and at /complete/:id/ perform POST to mongoDB
+        //
     }
 
     listoftask() {

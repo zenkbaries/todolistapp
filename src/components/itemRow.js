@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DeleteButton from './DeleteButton';
 
 export default class ItemRow extends Component {
     
@@ -12,7 +13,8 @@ export default class ItemRow extends Component {
                 </td>
                 <td>
                     <a href={"/edit/"+this.props.list._id} className="btn btn-info" role="button">Edit</a>
-                    <a href={"/delete/"+this.props.list._id} className="btn btn-danger" role="button">Delete</a>
+                    {/* <a href={"/delete/"+this.props.list._id} className="btn btn-danger" role="button">Delete</a> */}
+                    <DeleteButton onCLick={this.deleteItem()} />
                 </td>
 
             </tr>

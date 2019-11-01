@@ -7,9 +7,10 @@ export default class TaskList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {  refreshlist: '',
-                        lists: []
-                    };
+        this.state = {  
+            refreshlist: '',
+            lists: []
+        };
     }
 
     componentDidMount() {
@@ -32,12 +33,6 @@ export default class TaskList extends Component {
                      console.log(error);
                 })
          }
-    }
-
-    handleToggleComplete() {
-        //
-        //  Send POST to api server (/complete/:id) and at /complete/:id/ perform POST to mongoDB
-        //
     }
 
     listoftask() {

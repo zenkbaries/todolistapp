@@ -7,6 +7,7 @@ const ItemField = () => {
                 <th>Item</th>
                 <th>Due</th>
                 <th>Action</th>
+                <th>complete?</th>
             </tr>
         );
 };

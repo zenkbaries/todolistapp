@@ -24,7 +24,7 @@ export default class TaskList extends Component {
 
     componentDidUpdate(){
         //  if(prevProps.newItem !== this.props.newItem){
-         if(true) {
+        //  if(true) {
             axios.get('http://localhost:4000/lists/')
                 .then(response => {
                      this.setState({ lists: response.data });
@@ -32,7 +32,7 @@ export default class TaskList extends Component {
                 .catch(function (error){
                      console.log(error);
                 })
-         }
+        //  }
     }
 
     listoftask() {

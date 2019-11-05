@@ -61,7 +61,8 @@ export default class CreateList extends Component {
                      list_due: '',
                      new_item: newItem
                  })
-             });
+             })
+             this.props.history.push("/");
     }
 
     render() {
@@ -86,16 +87,7 @@ export default class CreateList extends Component {
                                 value={this.state.list_due}
                                 onChange={this.onChangeListDue}
                                 />
-                    </div>
-                    <div className="form-group">
-                        <label>Status: </label>
-                        <input 
-                                type="text" 
-                                className="form-control"
-                                value={this.state.list_status}
-                                onChange={this.onChangeListStatus}
-                                />
-                    </div>        
+                    </div>      
                     <div className="form-group">
                         <input type="submit" value="Create Item" className="btn btn-primary" />
                     </div>
